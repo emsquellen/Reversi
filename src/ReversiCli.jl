@@ -74,6 +74,7 @@ function play_game_vs_ai()
         end
         ai_move = random_ai(b, 2)
         make_move(b, ai_move[1], ai_move[2], 2)
+        display(b.board)
         if is_full(b)
             println("GAME OVER")
             p1, p2 = scores(b)
@@ -120,6 +121,38 @@ function ai_vs_ai()
     end
 
 end
+
+function coolai_vs_coolai()
+    b = Board()
+    players = [1, 2]
+    while true
+        for p in players
+            vm = get_all_valid_moves(b, p)
+            if length(vm) == 0
+                printlf("No valid moves for player $p. Skipping turn")
+                continue
+            end
+            move = cool_random_ai(b, p)
+            make_move(b, move[1], move[2], p)
+            display(b.board)
+            if is_full(b)
+                println("GAME OVER")
+                p1, p2 = scores(b)
+                if p1 == p2
+                    println("TIE!")
+                elseif p1 > p2
+                    println("Player 1 wins! Score $p1. Player 2 score: $p2")
+                else
+                    println("Player 2 wins! Score $p2. Player 1 score: $p1")
+                end
+                return nothing
+            end
+        end
+
+    end
+
+end
+
 
 function view_valid_moves(b::Board, player::Int)
     print_array = deepcopy(b.board)
