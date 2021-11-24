@@ -1,0 +1,4 @@
+name = "Reversi"
+uuid = "03f1f2a4-d23d-4269-95f7-7e1de849a0e0"
+authors = ["emsquellen <24551188+emsquellen@users.noreply.github.com>"]
+version = "0.1.0"
