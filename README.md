@@ -1,3 +1,3 @@
 # Reversi
 
-Expirimental Reversi/Orthello implementation in Julia.
+Expirimental Reversi/Othello implementation in Julia. Used for research for a school project.

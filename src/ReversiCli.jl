@@ -4,11 +4,8 @@ using Random
 using ..ReversiLogic
 using ..ReversiBoard
 using ..ReversiPlayer
-
-function input(prompt::AbstractString = "")
-    print(prompt)
-    return parse(Int, chomp(readline()))
-end
+using ..ReversiUtils
+export play_game, play_game_vs_ai, ai_vs_ai
 
 function play_game()
     b = Board()
@@ -39,15 +36,14 @@ function play_game()
                 else
                     println("Player 2 wins! Score $p2. Player 1 score: $p1")
                 end
-                return
+                return nothing
             end
         end
-
     end
 end
 
 
-function play_gamevs_ai()
+function play_game_vs_ai()
     b = Board()
     while true
         vm = get_all_valid_moves(b, 1)
@@ -88,13 +84,13 @@ function play_gamevs_ai()
             else
                 println("Player 2 wins! Score $p2. Player 1 score: $p1")
             end
-            return
+            return nothing
         end
     end
 
 end
 
-function aivsai()
+function ai_vs_ai()
     b = Board()
     players = [1, 2]
     while true
@@ -117,7 +113,7 @@ function aivsai()
                 else
                     println("Player 2 wins! Score $p2. Player 1 score: $p1")
                 end
-                return
+                return nothing
             end
         end
 
@@ -132,10 +128,7 @@ function view_valid_moves(b::Board, player::Int)
         print_array[CartesianIndex(pos[1], pos[2])] = 9
     end
     display(print_array)
+    return nothing
 end
-
-
-
-aivsai()
 
 end

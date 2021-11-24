@@ -3,7 +3,7 @@ module ReversiLogic
 using ..ReversiBoard
 export check_move, make_move, get_all_valid_moves
 
-function check_move(b::Board, x::Int, y::Int, player::Int)
+function check_move(b::Board, x::Int, y::Int, player::Int)::Bool
     if !is_valid_and_empty(b, x, y)
         return false
     end
@@ -27,7 +27,7 @@ function check_move(b::Board, x::Int, y::Int, player::Int)
     return false
 end
 
-function make_move(b::Board, x::Int, y::Int, player::Int)
+function make_move(b::Board, x::Int, y::Int, player::Int)::Bool
     if !is_valid_and_empty(b, x, y)
         return false
     end
@@ -57,6 +57,7 @@ function make_move(b::Board, x::Int, y::Int, player::Int)
             end
         end
     end
+    return true
 end
 
 

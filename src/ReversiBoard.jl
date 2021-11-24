@@ -14,18 +14,15 @@ function Board()
     Board(b)
 end
 
-function is_valid(b::Board, x::Int, y::Int)
+function is_valid(b::Board, x::Int, y::Int)::Bool
     return ((0 < x <= 8) && (0 < y <= 8))
 end
 
-function is_valid_and_empty(b::Board, x::Int, y::Int)
-    return (
-        ((0 < x <= 8) && (0 < y <= 8)) &&
-        b.board[CartesianIndex(x, y)] == 0
-    )
+function is_valid_and_empty(b::Board, x::Int, y::Int)::Bool
+    return (((0 < x <= 8) && (0 < y <= 8)) && b.board[CartesianIndex(x, y)] == 0)
 end
 
-function is_full(b::Board)
+function is_full(b::Board)::Bool
     for i in eachindex(b.board)
         if b.board[i] == 0
             return false
@@ -34,7 +31,7 @@ function is_full(b::Board)
     return true
 end
 
-function scores(b::Board)
+function scores(b::Board)::Vector{Int}
     p1 = 0
     p2 = 0
     for i in eachindex(b.board)
