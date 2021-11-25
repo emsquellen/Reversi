@@ -51,7 +51,7 @@ function play_game_vs_ai()
     while true
         vm = get_all_valid_moves(b, 1)
         if length(vm) == 0
-            printlf("No valid moves for player 1. Skipping turn")
+            println("No valid moves for player 1. Skipping turn")
             continue
         end
         println("Valid moves: (marked with 9) ")
@@ -104,7 +104,7 @@ function ai_vs_ai()
         for p in players
             vm = get_all_valid_moves(b, p)
             if length(vm) == 0
-                printlf("No valid moves for player $p. Skipping turn")
+                println("No valid moves for player $p. Skipping turn")
                 continue
             end
             move = random_ai(b, p)
@@ -137,7 +137,7 @@ function coolai_vs_coolai()
         for p in players
             vm = get_all_valid_moves(b, p)
             if length(vm) == 0
-                printlf("No valid moves for player $p. Skipping turn")
+                println("No valid moves for player $p. Skipping turn")
                 continue
             end
             move = cool_random_ai(b, p)
