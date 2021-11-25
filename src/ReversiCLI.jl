@@ -1,6 +1,5 @@
 module ReversiCLI
 
-using Random
 using ..ReversiLogic
 using ..ReversiBoard
 using ..ReversiPlayer

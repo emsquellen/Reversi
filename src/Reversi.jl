@@ -5,7 +5,6 @@ include("ReversiLogic.jl")
 include("ReversiPlayer.jl")
 include("ReversiUtils.jl")
 include("ReversiCLI.jl")
+include("ReversiUI.jl")
 
-ReversiCLI.coolai_vs_coolai()
-
-end # module
+end
