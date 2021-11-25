@@ -1,4 +1,6 @@
 module ReversiPlayer
+
+using Random
 using ..ReversiBoard
 using ..ReversiLogic
 export random_ai, cool_random_ai
