@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "daylerees.rainglow",
+        "pkief.material-icon-theme",
+        "singularitti.vscode-julia-formatter",
+        "julialang.language-julia",
+        "eamodio.gitlens",
+        "vtrois.gitmoji-vscode",
+        "github.github-vscode-theme",
+        "mhutchie.git-graph",
+        "jinsihou.diff-tool"
+    ]
+}
