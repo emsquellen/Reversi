@@ -8,18 +8,20 @@ using ..ReversiUtils
 export play_game, play_game_vs_ai, ai_vs_ai
 
 function play_game()
+    println("\n")
     b = Board()
     players = [1, 2]
     while true
         for p in players
             vm = get_all_valid_moves(b, p)
             if length(vm) == 0
-                printlf("No valid moves for player $p. Skipping turn")
+                println("No valid moves for player $p. Skipping turn")
                 continue
             end
             println("Valid moves: (marked with 9) ")
             view_valid_moves(b, p)
             display(vm)
+            println("\n")
             move = [-1, -1]
             while !(move in vm)
                 move[1] = input("Choose a move row: ")
@@ -45,6 +47,7 @@ end
 
 function play_game_vs_ai()
     b = Board()
+    println("\n")
     while true
         vm = get_all_valid_moves(b, 1)
         if length(vm) == 0
@@ -54,6 +57,7 @@ function play_game_vs_ai()
         println("Valid moves: (marked with 9) ")
         view_valid_moves(b, 1)
         display(vm)
+        println("\n")
         move = [-1, -1]
         while !(move in vm)
             move[1] = input("Choose a move row: ")
@@ -72,9 +76,10 @@ function play_game_vs_ai()
             end
             return
         end
-        ai_move = random_ai(b, 2)
+        ai_move = cool_random_ai(b, 2)
         make_move(b, ai_move[1], ai_move[2], 2)
         display(b.board)
+        println("\n")
         if is_full(b)
             println("GAME OVER")
             p1, p2 = scores(b)
@@ -93,6 +98,7 @@ end
 
 function ai_vs_ai()
     b = Board()
+    println("\n")
     players = [1, 2]
     while true
         for p in players
@@ -104,6 +110,7 @@ function ai_vs_ai()
             move = random_ai(b, p)
             make_move(b, move[1], move[2], p)
             display(b.board)
+            println("\n")
             if is_full(b)
                 println("GAME OVER")
                 p1, p2 = scores(b)
@@ -124,6 +131,7 @@ end
 
 function coolai_vs_coolai()
     b = Board()
+    println("\n")
     players = [1, 2]
     while true
         for p in players
@@ -135,6 +143,7 @@ function coolai_vs_coolai()
             move = cool_random_ai(b, p)
             make_move(b, move[1], move[2], p)
             display(b.board)
+            println("\n")
             if is_full(b)
                 println("GAME OVER")
                 p1, p2 = scores(b)
@@ -161,6 +170,7 @@ function view_valid_moves(b::Board, player::Int)
         print_array[CartesianIndex(pos[1], pos[2])] = 9
     end
     display(print_array)
+    println("\n")
     return nothing
 end
 

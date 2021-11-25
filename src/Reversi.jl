@@ -6,6 +6,6 @@ include("ReversiPlayer.jl")
 include("ReversiUtils.jl")
 include("ReversiCLI.jl")
 
-ReversiCLI.coolai_vs_coolai()
+ReversiCLI.play_game_vs_ai()
 
 end # module
