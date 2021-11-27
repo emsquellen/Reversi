@@ -1,5 +1,5 @@
 module ReversiBoard
-export Board, is_valid, is_full, scores, is_valid_and_empty
+export Board, is_valid, is_full, scores, is_valid_and_empty, printb
 
 mutable struct Board
     board::Matrix{Int}
@@ -12,6 +12,17 @@ function Board()
     b[CartesianIndex(5, 4)] = 1
     b[CartesianIndex(5, 5)] = 2
     Board(b)
+end
+
+function printb(b::Board)
+    run(`clear`)
+    
+    println("┍━━━━━━━━┓")
+    for col in 1:8
+        println("│", join([(x == 1) ? "░" : (x == 2) ? "█" : (x == 9) ? "╳" : "⠀" for x in b.board[col:col, :]]), "│")
+    end
+    println("┕━━━━━━━━┙")
+    sleep(2)
 end
 
 function is_valid(b::Board, x::Int, y::Int)::Bool

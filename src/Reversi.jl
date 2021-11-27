@@ -7,4 +7,6 @@ include("ReversiUtils.jl")
 include("ReversiCLI.jl")
 include("ReversiUI.jl")
 
+ReversiCLI.ai_vs_ai()
+
 end
