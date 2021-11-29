@@ -3,7 +3,6 @@ module ReversiCLI
 using ..ReversiLogic
 using ..ReversiBoard
 using ..ReversiPlayer
-using ..ReversiUtils
 export play_game, play_game_vs_ai, ai_vs_ai
 
 function play_game()
@@ -17,15 +16,9 @@ function play_game()
                 println("No valid moves for player $p. Skipping turn")
                 continue
             end
-            println("Valid moves: (marked with 9) ")
             view_valid_moves(b, p)
-            printb(vm)
             println("\n")
-            move = [-1, -1]
-            while !(move in vm)
-                move[1] = input("Choose a move row: ")
-                move[2] = input("Choose a move col: ")
-            end
+            move = get_valid_move_input(b, p)
             make_move(b, move[1], move[2], p)
             if is_full(b)
                 println("GAME OVER")
@@ -53,15 +46,10 @@ function play_game_vs_ai()
             println("No valid moves for player 1. Skipping turn")
             continue
         end
-        println("Valid moves: (marked with 9) ")
+        
         view_valid_moves(b, 1)
-        printb(vm)
         println("\n")
-        move = [-1, -1]
-        while !(move in vm)
-            move[1] = input("Choose a move row: ")
-            move[2] = input("Choose a move col: ")
-        end
+        move = get_valid_move_input(b, 1)
         make_move(b, move[1], move[2], 1)
         if is_full(b)
             println("GAME OVER")
@@ -163,12 +151,13 @@ end
 
 
 function view_valid_moves(b::Board, player::Int)
+    println("Valid moves: (marked with ╳) ")
     print_array = deepcopy(b.board)
     possible_moves = get_all_valid_moves(b, player)
     for pos in possible_moves
         print_array[CartesianIndex(pos[1], pos[2])] = 9
     end
-    display(print_array)
+    printb(print_array)
     println("\n")
     return nothing
 end

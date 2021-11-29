@@ -61,7 +61,7 @@ function make_move(b::Board, x::Int, y::Int, player::Int)::Bool
 end
 
 
-function get_all_valid_moves(b::Board, player::Int)
+function get_all_valid_moves(b::Board, player::Int)::Vector
     L = []
     for i in CartesianIndices(b.board)
         if check_move(b, i[1], i[2], player)
